@@ -1,0 +1,14 @@
+<%= render :partial => 'category/list' %>
+
+<% if @main_thing %>
+
+	<!-- main thing -->
+	<br/>
+	<%= render :partial => 'thing/show', :locals => { :thing => @main_thing, :main_thing => nil } %>
+	<br/><br/>
+
+	<!-- other things -->
+	<% for other_thing in @other_things %>
+		<%= render :partial => 'thing/show', :locals => { :thing => other_thing, :main_thing => @main_thing } %><br/>
+	<% end-%>
+<% end-%>
