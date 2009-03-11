@@ -1,0 +1,15 @@
+<div class="page_content_holder">
+	<h1>Login</h1><br/>
+	
+	<% form_tag session_path do -%>
+		Email<br/>
+		<%= text_field :user, :email, :size => 25, :class => 'text_field', :value => "#{@email}" %><br/>
+		<br/>
+		
+		Password<br/>
+		<%= password_field :user, :password, :size => 25, :class => 'text_field' %><br/>
+
+		<%= submit_tag "Login", :class => 'submit_button' %>
+
+	<% end-%>
+</div><br/>

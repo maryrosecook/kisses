@@ -1,4 +1,17 @@
-<% if main_thing %>
-	<%= thing.factor(main_thing) %>
+<% main_thing ? count = Util.comma_format(thing.multiple(main_thing)) : count = 1 %>
+<strong><%= count %></strong>
+
+<%= thing.inflected_body(count) %>
+
+<% if main_thing && logged_in? && current_user.admin? %>
+
+	<!-- remove -->
+	<span id='remove_link_<%= thing.id %>'>
+		<%= link_to_remote( "x",
+										 	{ :url => { :controller => 'thing', :action => 'remove_link',
+																	:params => { :main_thing_id => main_thing.id, :thing_id => thing.id } },
+										 	  :loading => "Element.hide('remove_link#{thing.id}');
+												    				 Element.show('remove_result#{thing.id}');" } ) %>
+	</span>
+	<span id="remove_result<%= thing.id %>" style="display:none;"></span>
 <% end-%>
-<%= thing.body %>

@@ -15,7 +15,19 @@ class Thing < ActiveRecord::Base
     return converted_value
   end
   
-  def factor(other_thing)
-    return (other_thing.value_as(self.unit).to_f / self.value.to_f).to_f
+  def multiple(other_thing)
+    return (other_thing.value_as(self.unit).to_f / self.value.to_f).round()
+  end
+  
+  def inflected_body(count)
+    inflected_body = self.body
+    if count != 1 
+      words = self.body.split(" ")
+      noun = words[words.length-1]
+      inflected_noun = noun.pluralize
+      inflected_body = words[0..words.length-2].join(" ") + " " + inflected_noun
+    end
+    
+    return inflected_body
   end
 end
