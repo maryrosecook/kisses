@@ -40,6 +40,12 @@ hr { border:1px #aaa solid; height:1; }
 .error { color: #FF0000; }
 .valid { color: #00FF00; }
 
+.thing_description { font-size: 30px; line-height:1.5em; }
+.main_thing_description { font-size: 40px; line-height:1.5em; }
+.aux_info { font-size:12px; line-height:12px; }
+
+.admin_link { font-size: 12px; vertical-align:top; }
+
 /* forms */
 
 .text_field {font-family:'Lucida Sans Unicode', 'Lucida Grande';  margin:3 0 0 0;  border:1px solid #224; padding:2px 2px 2px 3px; font-size:12px; }

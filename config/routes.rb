@@ -54,6 +54,7 @@ ActionController::Routing::Routes.draw do |map|
   
   
   map.connect '/thing/show/:id', :controller => 'thing', :action => 'show'
+  map.connect 'comparison', :controller => 'comparison'
   
   map.connect ':controller/:action/:id'
   map.connect ':controller/:action/:id.:format'

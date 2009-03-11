@@ -1,17 +1,32 @@
-<% main_thing ? count = Util.comma_format(thing.multiple(main_thing)) : count = 1 %>
-<strong><%= count %></strong>
+<% main_thing ? thing_description_class = "thing_description" : thing_description_class = "main_thing_description" %>
 
-<%= thing.inflected_body(count) %>
+<div id="thing_<%= thing.id %>" onmouseover="Element.show('aux_info_<%=thing.id%>');
+																						 Element.hide('aux_info_spacer_<%=thing.id%>');" 
+																
+																onmouseout="Element.hide('aux_info_<%=thing.id%>');
+																						Element.show('aux_info_spacer_<%=thing.id%>');">
+																						
+	<span class="<%=thing_description_class%>">
+		<% main_thing ? count = Maths.vagarise(thing.multiple(main_thing)) : count = 1 %>
+		<strong><%= count %></strong>
 
-<% if main_thing && logged_in? && current_user.admin? %>
+		<%= thing.inflected_body(count) %>
 
-	<!-- remove -->
-	<span id='remove_link_<%= thing.id %>'>
-		<%= link_to_remote( "x",
-										 	{ :url => { :controller => 'thing', :action => 'remove_link',
-																	:params => { :main_thing_id => main_thing.id, :thing_id => thing.id } },
-										 	  :loading => "Element.hide('remove_link#{thing.id}');
-												    				 Element.show('remove_result#{thing.id}');" } ) %>
+		<span class="aux_info">
+			<span id="aux_info_spacer_<%=thing.id%>"><br/><br/></span>
+			<div id="aux_info_<%=thing.id%>" style="display:none;">
+				<%= thing.value %>
+				<% if main_thing && logged_in? && current_user.admin? %>
+					<!-- remove -->
+					<span class="admin_link">
+						<%= link_to_remote( "x",
+														 	{ :url => { :controller => 'comparison', :action => 'edit_visibility',
+																					:first_thing_id => main_thing.id, :second_thing_id => thing.id, :visible => Comparison::NON_VISIBLE },
+														 	  :loading => "Element.hide('thing_#{thing.id}');" } ) %>
+					</span>
+				<% end-%>
+			</div>
+		</span>
 	</span>
-	<span id="remove_result<%= thing.id %>" style="display:none;"></span>
-<% end-%>
+	<br/>
+</div>

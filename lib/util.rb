@@ -60,8 +60,4 @@ module Util
   def self.f_date_time(date)
     date.strftime("%d.%m.%y %H:%M") if date
   end
-  
-  def self.comma_format(str)
-    str ? str.to_s.gsub(/(.)(?=.{3}+$)/, %q(\1,)) : nil
-  end
 end

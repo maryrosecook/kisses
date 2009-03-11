@@ -9,6 +9,14 @@ class Comparison < ActiveRecord::Base
   VISIBLE = 1
   NON_VISIBLE = 0
 
+  def self.new_(first_thing, second_thing, visible)
+    comparison = self.new()
+    comparison.first_thing = first_thing
+    comparison.second_thing = second_thing
+    comparison.visible = visible
+    return comparison
+  end
+
 
   def self.remove_non_visible(main_thing, things)
     non_visible_things = find_thing_comparisons(main_thing, things, NON_VISIBLE)
@@ -27,6 +35,14 @@ class Comparison < ActiveRecord::Base
   end
   
   def self.find_one_way_comparison(first_thing, second_thing, visible)
-    self.find(:first, :conditions => "visible = #{visible} && first_thing_id = #{first_thing.id} && second_thing_id = #{second_thing.id}")
+    where = "first_thing_id = #{first_thing.id} && second_thing_id = #{second_thing.id}"
+    where += "&& visible = #{visible}" if visible
+    self.find(:first, :conditions => where)
+  end
+  
+  def self.find_comparison(first_thing, second_thing)
+    comparison = find_one_way_comparison(first_thing, second_thing, nil)
+    comparison = find_one_way_comparison(second_thing, first_thing, nil) if !comparison
+    return comparison
   end
 end

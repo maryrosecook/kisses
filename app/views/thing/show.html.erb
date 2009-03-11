@@ -2,10 +2,10 @@
 
 	<!-- main thing -->
 	<%= render :partial => 'thing/show', :locals => { :thing => @main_thing, :main_thing => nil } %>
-	<br/><br/>
+	<br/><br/><br/>
 
 	<!-- other things -->
 	<% for other_thing in @other_things %>
-		<%= render :partial => 'thing/show', :locals => { :thing => other_thing, :main_thing => @main_thing } %><br/>
+		<%= render :partial => 'thing/show', :locals => { :thing => other_thing, :main_thing => @main_thing } %>
 	<% end-%>
 <% end-%>
