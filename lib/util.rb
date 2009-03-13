@@ -52,12 +52,4 @@ module Util
     
     ret_items_occurring_more_than_once.uniq()
   end
-  
-  def self.f_date(date)
-    date.strftime("%d.%m.%y") if date
-  end
-  
-  def self.f_date_time(date)
-    date.strftime("%d.%m.%y %H:%M") if date
-  end
 end

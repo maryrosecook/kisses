@@ -21,7 +21,7 @@ class Thing < ActiveRecord::Base
   
   def inflected_body(count)
     inflected_body = self.body
-    if count != 1 
+    if count != 1    
       words = self.body.split(" ")
       noun = words[words.length-1]
       inflected_noun = noun.pluralize
@@ -29,5 +29,15 @@ class Thing < ActiveRecord::Base
     end
     
     return inflected_body
+  end
+  
+  
+  def self.fill_in_identifiers
+    for thing in self.find(:all)
+      if !thing.identifier
+        thing.identifier = thing.body.gsub(/\W/, "").downcase
+        thing.save()
+      end
+    end
   end
 end

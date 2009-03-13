@@ -1,6 +1,9 @@
 class HomeController < ApplicationController
 
   def index
-    @categories = Category.find(:all)
+  end
+  
+  def run
+    
   end
 end

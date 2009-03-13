@@ -4,18 +4,25 @@
 																						 Element.hide('aux_info_spacer_<%=thing.id%>');" 
 																
 																onmouseout="Element.hide('aux_info_<%=thing.id%>');
-																						Element.show('aux_info_spacer_<%=thing.id%>');">
-																						
-	<span class="<%=thing_description_class%>">
-		<% main_thing ? count = Maths.vagarise(thing.multiple(main_thing)) : count = 1 %>
-		<strong><%= count %></strong>
+																						Element.show('aux_info_spacer_<%=thing.id%>');" class="thing">
 
-		<%= thing.inflected_body(count) %>
+	<% @i ? colour_class = Form.colour(@i) : colour_class = ""  %>
+	<span class="<%=thing_description_class%> <%=colour_class%>">
+		<%= "<a href='/thing/#{thing.identifier}'>" if main_thing %>
+		
+		<% if !main_thing %>
+			<%= Form.indefinite_article(thing.body) %> <%= thing.body %>
+		<% else %>
+			<strong><%= Maths.vagarise(thing.multiple(main_thing)) %></strong>
+			<%= thing.inflected_body(thing.multiple(main_thing)) %>
+		<% end-%>
 
 		<span class="aux_info">
-			<span id="aux_info_spacer_<%=thing.id%>"><br/><br/></span>
-			<div id="aux_info_<%=thing.id%>" style="display:none;">
-				<%= thing.value %>
+			<span id="aux_info_spacer_<%=thing.id%>" class="<%=colour_class%>"><br/><br/></span>
+			
+			<div id="aux_info_<%=thing.id%>" class="<%=colour_class%>" style="display:none;">
+				<%= Form.value_with_symbol_and_commas(thing) %>
+				<%= Form.comma_format(thing.multiple(main_thing)) if main_thing %>
 				<% if main_thing && logged_in? && current_user.admin? %>
 					<!-- remove -->
 					<span class="admin_link">
@@ -27,6 +34,7 @@
 				<% end-%>
 			</div>
 		</span>
+		<%= "</a>" if main_thing %>
 	</span>
 	<br/>
 </div>
