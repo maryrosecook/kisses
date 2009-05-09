@@ -7,4 +7,3 @@ script/sync_local_copy_remote_db
 Capfile
 config/database.yml
 config/deploy.rb
-config/config.yml
