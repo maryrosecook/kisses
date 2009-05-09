@@ -7,6 +7,6 @@ class ExchangeRate < ActiveRecord::Base
              :foreign_key => "second_unit_id"
              
   def self.find_for_units(first_unit, second_unit)
-    self.find(:first, :conditions => "first_unit_id = #{first_unit.id} && second_unit_id = #{second_unit.id}")
+    self.find(:first, :conditions => "first_unit_id = #{first_unit.id} AND second_unit_id = #{second_unit.id}")
   end
 end
