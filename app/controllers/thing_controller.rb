@@ -2,7 +2,7 @@ class ThingController < ApplicationController
   before_filter :capture_country
   
   def show
-    @country = Country.find(session[:country_id])
+    @country = Country.find(1)
     @main_thing = Thing.find_by_identifier(params[:identifier])
     @other_things = []
     if category = @main_thing.unit.category

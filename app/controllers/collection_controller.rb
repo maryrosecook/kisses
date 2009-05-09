@@ -3,7 +3,7 @@ class CollectionController < ApplicationController
   skip_before_filter :verify_authenticity_token
   
   def show
-    @country = Country.find(session[:country_id])
+    @country = Country.find(1)
     collection = Collection.find_by_identifier(params[:identifier])
     @main_thing = collection.get_main_thing()
     @other_things = collection.get_other_things()
