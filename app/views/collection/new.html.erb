@@ -1,6 +1,6 @@
 <% form_tag do -%>
 	Collection name<br/>
-	<%= text_field :collection, :identifier %><br/>
+	<%= text_field :collection, :identifier, :class => "text_field" %><br/>
 	<br/>
-	<%= submit_tag "Create" %> 
+	<%= submit_tag "Create", :class => "submit_button" %> 
 <% end %>

@@ -6,7 +6,6 @@ module Geolocating
   def self.get_user_country(request)
     ip = request.remote_ip
     url = "http://api.hostip.info/get_html.php?ip=#{ip}"
-    Log::log(nil, nil, Log::LOCATION_GRAB, nil, "#{url}")
     body = APIUtil::get_request(url)
 
     country = nil

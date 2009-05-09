@@ -13,9 +13,9 @@ module APIUtil
         response = resp.body
       end
     rescue Timeout::Error
-      Log::log(nil, nil, Log::API_TIMEOUT, nil, "URL: #{url}")
+
     rescue
-      Log::log(nil, nil, Log::API_UNKNOWN_FAIL, nil, "URL: #{url}")
+
     end
   
     response

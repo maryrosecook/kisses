@@ -6,7 +6,6 @@ class UsersController < ApplicationController
         session[:s] = params[:s]
         redirect_to(current_user.audiography.get_url())
       else
-        Log::log(nil, nil, Log::ERROR, nil, "Could not create new Playmary.")
         flash[:notice] = "Sorry, a new Playmary could not be created for you."
         redirect_to("/")
       end
@@ -31,11 +30,9 @@ class UsersController < ApplicationController
           current_user.audiography.url_title = params[:audiography][:url_title]
 
           if current_user.save() && current_user.audiography.save()
-            Log::log(current_user, nil, Log::CLAIM, nil, "Success")
             flash[:notice] = "You have claimed your Playmary and logged in."
             redirect_to(current_user.audiography.get_url())
           else
-            Log::log(current_user, nil, Log::CLAIM, nil, "Fail")
             flash[:notice] = "Sorry, your claim failed for some unfathomable reason."
           end
         else
