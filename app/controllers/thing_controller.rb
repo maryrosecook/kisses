@@ -1,5 +1,4 @@
 class ThingController < ApplicationController
-  before_filter :capture_country
   
   def show
     @country = Country.find(1)
