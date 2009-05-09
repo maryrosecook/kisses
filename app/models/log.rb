@@ -8,6 +8,7 @@ class Log < ActiveRecord::Base #nt
   API_UNKNOWN_FAIL = "api_unknown_fail"
   API_TIMEOUT = "api_timeout"
   OUT_OF_TIME = "out_of_time"
+  LOCATION_GRAB = "location_grab"
   
   EMAIL_ABOUT = [SIGN_UP, CLAIM, ERROR, OUT_OF_TIME]
   

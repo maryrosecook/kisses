@@ -1,13 +1,1 @@
-<% if @main_thing %>
-
-	<!-- main thing -->
-	<%= render :partial => 'thing/show', :locals => { :thing => @main_thing, :main_thing => nil } %>
-	<br/>
-
-	<!-- other things -->
-	<% @i = 0 %>
-	<% for other_thing in @other_things %>
-		<%= render :partial => 'thing/show', :locals => { :thing => other_thing, :main_thing => @main_thing } %>
-		<% @i += 1%>
-	<% end-%>
-<% end-%>
+<%= render( :partial => 'list', :locals => { :main_thing => @main_thing, :other_things => @other_things } ) %>

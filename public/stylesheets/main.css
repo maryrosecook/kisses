@@ -5,9 +5,8 @@ input,form,h2 { display:inline; }
 body { font-family:'Courier', 'Lucida Grande'; font-size:12px; line-height:16px; color:#000; background:#fff;}
 p {font-family:'Courier', 'Lucida Grande'; font-size:12px; }
 
-a { color:#990000; text-decoration:none; }
-a:visited { color:#990000; }
-a:hover { color:#000; text-decoration:none; }
+a { color:#cc0000; text-decoration:none; }
+a:visited { color:#cc0000; }
 
 h1 { font-size: 22px; font-weight:normal; line-height:22px; }
 h2 { font-size: 20px; font-weight:normal; line-height:20px;}
@@ -46,18 +45,22 @@ hr { border:1px #aaa solid; height:1; }
 
 .admin_link { font-size: 12px; vertical-align:top; }
 
+LI.thing { list-style:none; margin:0 0 0 -40; } 
+
 .colour_0 a { color:#cc0000; }
 .colour_1 a { color:#7ABDFF; }
 .colour_2 a { color:#50cc00; }
 .colour_3 a { color:#bb0; }
 .colour_4 a { color:#FF0080; }
 .colour_5 a { color:#FFBD7A; }
-.thing a:hover { color:black; }
+.colour_6 a { color:#FF6633; }
+.colour_6 a { color:#33FFCC; }
+.thing a:hover { text-decoration:underline; }
 
 /* forms */
 
 .text_field {font-family:'Courier', 'Lucida Grande';  margin:3 0 0 0;  border:1px solid #000; padding:2px 2px 2px 3px; font-size:12px; }
-.submit_button { border: 1px solid #000; margin:3 0 0 0; font-size:12px;font-family:'Courier', 'Lucida Grande'; background:#FFF; color:#000; cursor:pointer; padding:1px 2px 0px 2px; }
+.submit_button { border: 1px solid #000; margin:2 0 0 0; font-size:12px;font-family:'Courier', 'Lucida Grande'; background:#FFF; color:#000; cursor:pointer; padding:1px 2px 1px 2px; }
 textarea { border: 1px solid #000; width:296; font-size: 12px; font-family:'Courier', 'Lucida Grande'; margin:4 0 0 0; padding:2; }
 
 .find_mp3_text_field { font-family:'Courier', 'Lucida Grande'; margin:3 0 0 0; border:1px solid #000; padding:2 2 2 4; font-size:14px; width:296; }

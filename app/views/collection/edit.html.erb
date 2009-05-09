@@ -1,0 +1,12 @@
+<%= javascript_include_tag :all, :cache => true %>
+
+<% form_remote_tag :url => { :controller => :collection, :action => :add_thing, :id => @collection } do %> 
+	<%= text_field_with_auto_complete :thing, :body, :class => "text_field" %> 
+	<%= submit_tag "Add", :class => "submit_button" %> 
+<% end %> 
+
+<ul id="things_list">
+	<% for thing in @collection.ordered_things %>
+		<li class="thing"><%= thing.body %></li>
+	<% end-%>
+</ul>

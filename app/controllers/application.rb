@@ -13,4 +13,16 @@ class ApplicationController < ActionController::Base
   # Uncomment this to filter the contents of submitted sensitive data parameters
   # from your application log (in this case, all fields with names like "password"). 
   # filter_parameter_logging :password
+  
+  def capture_country
+    if !session[:country_id]
+      country_str = Geolocating.get_user_country(request)
+      begin
+        country = Country.find_by_name(country_str)
+        session[:country_id] = country.id
+      rescue
+        session[:country_id] = 1
+      end
+    end
+  end
 end

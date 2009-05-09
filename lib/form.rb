@@ -12,27 +12,35 @@ module Form
     str ? str.to_s.gsub(/(.)(?=.{3}+$)/, %q(\1,)) : nil
   end
   
-  def self.value_with_symbol_and_commas(thing)
-    unit = thing.unit
+  def self.value_with_symbol_and_commas(thing, country)
+    category = thing.unit.category
+    country_base_unit = country.base_unit(category)
+    country_specific_value = thing.value_as(country_base_unit)
+    unit = country.base_unit(category)
+    
+    value = country_base_unit.round(value).to_s
+    
     if thing.value > 1
-      value = comma_format(thing.value.to_i)
+      value = comma_format(country_specific_value.to_i)
     else
-      value = thing.value.to_s
+      value = country_specific_value.to_s
     end
+    
     
     value_with_symbol = unit.symbol + value if unit.symbol_before
     value_with_symbol = value + unit.symbol if !unit.symbol_before
     return value_with_symbol
   end
   
-  VOWELS = ["a", "e", "i", "o", "u"]
+  VOWELS = ["a", "e", "i", "o", "u", "h"]
   def self.indefinite_article(str)
-    indefinite_article = ""
-    VOWELS.include?(str.to_s[0..0].downcase) ? indefinite_article = "An" : indefinite_article = "A" if str
-    return indefinite_article
+    article = ""
+    str = str.gsub(/\W/, "")
+    VOWELS.include?(str.to_s[0..0].downcase) && !str.to_s[1..1].match(/[A-Z]/) ? article = "An" : article = "A" if str
+    return article
   end
   
   def self.colour(i)
-    return "colour_#{i % 5}"
+    return "colour_#{i % 7}"
   end
 end

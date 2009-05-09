@@ -10,31 +10,20 @@
 	<span class="<%=thing_description_class%> <%=colour_class%>">
 		<%= "<a href='/thing/#{thing.identifier}'>" if main_thing %>
 		
-		<% if !main_thing %>
-			<%= Form.indefinite_article(thing.body) %> <%= thing.body %>
-		<% else %>
-			<strong><%= Maths.vagarise(thing.multiple(main_thing)) %></strong>
-			<%= thing.inflected_body(thing.multiple(main_thing)) %>
-		<% end-%>
+			<!-- description -->
+			<% if !main_thing %>
+				<%= Form.indefinite_article(thing.body) %> <%= thing.inflected_body(1) %>
+			<% else %>
+				<% multiple = thing.multiple(main_thing) %>
+				<strong><%= Maths.vagarise(multiple) %></strong>
+				<%= thing.inflected_body(multiple) %>
+			<% end-%>
 
-		<span class="aux_info">
-			<span id="aux_info_spacer_<%=thing.id%>" class="<%=colour_class%>"><br/><br/></span>
-			
-			<div id="aux_info_<%=thing.id%>" class="<%=colour_class%>" style="display:none;">
-				<%= Form.value_with_symbol_and_commas(thing) %>
-				<%= Form.comma_format(thing.multiple(main_thing)) if main_thing %>
-				<% if main_thing && logged_in? && current_user.admin? %>
-					<!-- remove -->
-					<span class="admin_link">
-						<%= link_to_remote( "x",
-														 	{ :url => { :controller => 'comparison', :action => 'edit_visibility',
-																					:first_thing_id => main_thing.id, :second_thing_id => thing.id, :visible => Comparison::NON_VISIBLE },
-														 	  :loading => "Element.hide('thing_#{thing.id}');" } ) %>
-					</span>
-				<% end-%>
-			</div>
-		</span>
 		<%= "</a>" if main_thing %>
+
+		<!-- auxiliary information -->
+		<%= render :partial => 'thing/aux_info', :locals => { :main_thing => main_thing, :thing => thing, :country => country } %>
+			
 	</span>
 	<br/>
 </div>

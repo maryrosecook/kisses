@@ -17,4 +17,17 @@ module Maths
 
     return vaguest
   end
+  
+  def self.round_to(num, x)
+    rounded_num = (num * 10**x).round.to_f / 10**x
+    if x > 0
+      if !rounded_num.to_s.match(/\.\d+/)
+        rounded_num = rounded_num.to_s + "." + ("0" * x)
+      end
+    else
+      rounded_num = rounded_num.to_i
+    end
+    
+    return rounded_num
+  end
 end

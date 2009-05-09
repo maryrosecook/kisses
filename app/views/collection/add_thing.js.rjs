@@ -1,0 +1,2 @@
+page.insert_html :bottom, 'things_list', "<li class='thing'>#{@thing.body}</li>"
+page['thing_body'].value = nil

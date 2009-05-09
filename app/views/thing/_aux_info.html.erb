@@ -1,0 +1,13 @@
+<span class="aux_info">
+	<span id="aux_info_spacer_<%=thing.id%>"><br/><br/></span>
+
+	<div id="aux_info_<%=thing.id%>" style="display:none;">
+		<%= Form.comma_format(thing.multiple(main_thing)) + "&nbsp;" if main_thing %>	
+		<%= Form.value_with_symbol_and_commas(thing, country) %>
+			
+			
+		<% if thing.citation %>
+			&nbsp;<a href='<%= thing.citation %>'>source</a>
+		<% end-%>
+	</div>
+</span>

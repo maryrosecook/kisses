@@ -45,14 +45,19 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :users
   map.resource :sessions
   
+  map.root :controller => 'home'
   map.connect '/run', :controller => 'home', :action => 'run'
   
   map.signup '/claim', :controller => 'users', :action => 'claim' 
   map.signup '/signup', :controller => 'users', :action => 'new' 
   map.login '/login', :controller => 'sessions', :action => 'new'
   map.logout '/logout', :controller => 'sessions', :action => 'destroy'
-  
-  map.connect 'comparison', :controller => 'comparison'
+
+  map.connect 'collection/new', :controller => 'collection', :action => 'new'
+  map.connect 'collection/auto_complete_for_thing_body', :controller => 'collection', :action => 'auto_complete_for_thing_body'
+  map.connect 'collection/edit/:identifier', :controller => 'collection', :action => 'edit'  
+  map.connect 'collection', :controller => 'collection'
+  map.connect 'collection/:identifier', :controller => 'collection', :action => 'show'
   
   map.connect 'thing/:identifier', :controller => 'thing', :action => 'show'
   
