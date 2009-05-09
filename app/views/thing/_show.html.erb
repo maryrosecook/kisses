@@ -12,7 +12,8 @@
 		
 			<!-- description -->
 			<% if !main_thing %>
-				<%= Form.indefinite_article(thing.body) %> <%= thing.inflected_body(1) %>
+				<strong><%= Form.indefinite_article(thing.body) if thing.pronoun != 1 %> <%= thing.inflected_body(1) %></strong>
+				<span class="unit_category_intro"><%= thing.unit.category.intro %></span>
 			<% else %>
 				<% multiple = thing.multiple(main_thing) %>
 				<strong><%= Maths.vagarise(multiple) %></strong>

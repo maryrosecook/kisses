@@ -27,8 +27,8 @@ module Form
     end
     
     
-    value_with_symbol = unit.symbol + value if unit.symbol_before
-    value_with_symbol = value + unit.symbol if !unit.symbol_before
+    value_with_symbol = unit.symbol + value if unit.symbol_before == 1
+    value_with_symbol = value + unit.symbol if unit.symbol_before != 1
     return value_with_symbol
   end
   

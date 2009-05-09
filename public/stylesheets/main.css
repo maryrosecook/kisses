@@ -42,7 +42,7 @@ hr { border:1px #aaa solid; height:1; }
 .main_thing_description { font-size: 40px; line-height:1.5em; }
 .thing_description { font-size: 30px; line-height:1.5em; padding:0; }
 .aux_info { font-size:12px; line-height:0px; padding:0; }
-
+.unit_category_intro { color:#aaa; }
 .admin_link { font-size: 12px; vertical-align:top; }
 
 LI.thing { list-style:none; margin:0 0 0 -40; } 

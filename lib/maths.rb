@@ -1,6 +1,6 @@
 module Maths
   
-  VAGARIES = {4 => "thousand", 7 => "million", 10 => "billion", 13 => "trillion"}
+  VAGARIES = { 4 => "thousand", 7 => "million", 10 => "billion", 13 => "trillion", 16 => "quadrillion", 19 => "quintillion", 22 => "sextillion", 25 => "septillion" }
   
   def self.vagarise(num)
     num = num.to_s

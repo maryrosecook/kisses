@@ -1,8 +1,7 @@
 <% if main_thing %>
-
+	
 	<!-- main thing -->
-	<%= render :partial => 'thing/show', :locals => { :thing => main_thing, :main_thing => nil, :country => @country } %>
-	<br/>
+	<%= render :partial => 'thing/show', :locals => { :thing => main_thing, :main_thing => nil, :country => @country } %><br/><br/>
 
 	<!-- other things -->
 	<% @i = 0 %>

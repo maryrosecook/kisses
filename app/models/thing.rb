@@ -12,6 +12,7 @@ class Thing < ActiveRecord::Base
         converted_value = value
       end
     end
+
     converted_value = (converted_value.to_f * 100).round().to_f / 100
     return converted_value
   end
