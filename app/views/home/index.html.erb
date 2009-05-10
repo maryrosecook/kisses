@@ -1,0 +1,12 @@
+<h1>Kisses</h1> from <a href='http://maryrosecook.com'>maryrosecook</a><br/><br/>
+
+<div class="homepage_intro">
+	Compares the magnitude of stuff.  Like one <a href='/thing/guidedmissiledestroyer'>guided missile destroyer</a>
+	costs as much as three million <a href='/thing/fluffykitten'>fluffy kittens</a>.
+</div>
+<br/>
+
+Some collections of comparisons:
+
+<% i = 0 %>
+<% for collection in @collections %><%= ", " if i > 0%><a href='/collection/<%= collection.identifier%>'><%= collection.identifier %></a><% i += 1%><% end-%>

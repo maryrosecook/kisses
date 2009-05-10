@@ -1,7 +1,7 @@
 /* generic */
 
 div,h1,h2,h3,h4,h5,h6,pre,form,fieldset,input,textarea,p,blockquote,th,td,table{ margin:0; padding:0; }
-input,form,h2 { display:inline; }
+input,form,h2,h1 { display:inline; }
 body { font-family:'Courier', 'Lucida Grande'; font-size:12px; line-height:16px; color:#000; background:#fff;}
 p {font-family:'Courier', 'Lucida Grande'; font-size:12px; }
 
@@ -30,6 +30,8 @@ hr { border:1px #aaa solid; height:1; }
 .general_top_nav_items { float:left; }
 .page_content_holder { margin-left:auto; margin-right:auto; width:800;text-align:justify; }
 .back_link { text-align:right; }
+
+.homepage_intro { width:300; }
 
 .login_table { width:285; }
 .signup_table { width:480; }
