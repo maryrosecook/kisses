@@ -10,4 +10,17 @@ class ThingController < ApplicationController
       @other_things = @other_things.sort { |x,y| y.value_as(y.unit) <=> x.value_as(x.unit) }
     end
   end
+  
+  def new
+    if request.post?
+      if thing = Thing.new_from_adding(params[:thing][:body], params[:unit][:id], params[:thing][:value])
+        if thing.save()
+          redirect_to("/thing/#{thing.identifier}")
+        end
+      end
+    else
+      @units = Unit.find(:all)
+      @thing = Thing.new
+    end
+  end
 end

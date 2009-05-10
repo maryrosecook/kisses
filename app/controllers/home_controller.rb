@@ -1,7 +1,8 @@
 class HomeController < ApplicationController
 
   def index
-    @collections = Collection.find(:all)
+    @collections = Collection.find_sanctioned()
+    @things = Thing.find_sanctioned()
   end
   
   def run

@@ -2,6 +2,19 @@ class Thing < ActiveRecord::Base
   belongs_to :unit
   has_and_belongs_to_many :collections
   
+  def self.new_from_adding(body, unit_id, value)
+    thing = nil
+    if Util.ne(body) && Util.ne(unit_id) && Util.ne(value)
+      thing = self.new()
+      thing.body = body
+      thing.unit_id = unit_id
+      thing.value = value
+      thing.generate_identifier()
+    end
+    
+    return thing
+  end
+  
   def value_as(new_unit)
     converted_value = nil
     if self.unit.compatible_with?(new_unit)
@@ -49,13 +62,28 @@ class Thing < ActiveRecord::Base
     return inflected_body
   end
   
-  
   def self.fill_in_identifiers
-    for thing in self.find(:all)
-      if !thing.identifier
-        thing.identifier = thing.body.gsub(/\W/, "").downcase
-        thing.save()
+    self.find(:all).each { |thing| thing.generate_identifier() }
+  end
+  
+  def generate_identifier
+    if !self.identifier && self.body
+      identifier = self.body.downcase().gsub(/\W/, "")
+      identifier_try = identifier
+
+      i = 1
+      while Thing.find_by_identifier(identifier_try)
+        identifier_try = identifier + i.to_s
+        i += 1
       end
+
+      self.identifier = identifier_try
     end
+    
+    self.save()
+  end
+  
+  def self.find_sanctioned
+    self.find(:all, :conditions => "sanctioned = 1")
   end
 end

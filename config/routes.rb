@@ -59,6 +59,7 @@ ActionController::Routing::Routes.draw do |map|
   map.connect 'collection', :controller => 'collection'
   map.connect 'collection/:identifier', :controller => 'collection', :action => 'show'
   
+  map.connect 'thing/new', :controller => 'thing', :action => 'new'
   map.connect 'thing/:identifier', :controller => 'thing', :action => 'show'
   
   map.connect ':controller/:action/:id'

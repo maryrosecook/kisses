@@ -20,4 +20,8 @@ class Collection < ActiveRecord::Base
     other_things.delete_at(0)
     return other_things
   end
+  
+  def self.find_sanctioned
+    self.find(:all, :conditions => "sanctioned = 1")
+  end
 end

@@ -1,0 +1,14 @@
+<% form_tag do -%>
+	Name<br/>
+	<%= text_field :thing, :body, :class => "text_field" %><br/><br/>
+	
+	Magnitude<br/>
+	<%= text_field :thing, :value, :class => "text_field" %><br/><br/>
+	
+	Unit
+	<%= select ("unit", "id", @units.map { |unit| [unit.name, unit.id] } ) %>
+	<a href='/images/calvinandhobbes.jpg'>But, what if the unit I want isn't in the list?</a><br/>
+	
+	<br/>
+	<%= submit_tag "Create", :class => "submit_button" %> 
+<% end %>
