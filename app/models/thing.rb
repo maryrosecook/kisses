@@ -53,7 +53,7 @@ class Thing < ActiveRecord::Base
       inflected_noun = noun.pluralize
       inflected_body_start = ""
       inflected_body_start = words[0..noun_i-1].join(" ") if noun_i > 0
-      inflected_body_end = words[noun_i+1..words.length-1].join(" ")
+      inflected_body_end = words[noun_i+1..words.length-1].join(" ")      
       inflected_body = inflected_body_start + " " + inflected_noun + " " + inflected_body_end
     end
     

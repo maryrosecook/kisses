@@ -5,16 +5,20 @@
 	costs as much as three million <a href='/thing/fluffykitten'>fluffy kittens</a>.
 </div><br/>
 
-See some pre-made collections of comparisons:
+See some comparisons:
 <% i = 0 %>
-<% for collection in @collections %><%= ", " if i > 0%><a href='/collection/<%= collection.identifier%>'><%= collection.identifier %></a><% i += 1%><% end-%>.
+<% for collection in @collections %><%= ", " if i > 0%><a href='/collection/<%= collection.identifier%>'><%= collection.identifier %></a><% i += 1%><% end-%>
 <br/>
-Or <a href='/collection/new'>create your own</a>.
+or <a href='/collection/new'>create your own</a>.
 
 <br/><br/>
 
 See some specific things:
 <% i = 0 %>
-<% for thing in @things %><%= ", " if i > 0 %><a href='/thing/<%= thing.identifier%>'><%= thing.body %></a><% i += 1 %><% end-%>.
+<% for thing in @things %><%= ", " if i > 0 %><a href='/thing/<%= thing.identifier%>'><%= thing.body %></a><% i += 1 %><% end-%>
 <br/>
-Or <a href='/thing/new'>create your own</a>.
+or <a href='/thing/new'>create your own</a>.
+
+<br/><br/><br/>
+
+The <a href='http://github.com/maryrosecook/kisses'>code</a> is open source.
