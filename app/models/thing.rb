@@ -31,7 +31,7 @@ class Thing < ActiveRecord::Base
   end
   
   def multiple(other_thing)
-    (other_thing.value_as(self.unit).to_f / self.value.to_f).round()
+    self.value != 0 ? (other_thing.value_as(self.unit).to_f / self.value.to_f).round() : 0
   end
   
   def inflected_body(count)
