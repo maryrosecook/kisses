@@ -7,18 +7,8 @@
 
 See some comparisons:
 <% i = 0 %>
-<% for collection in @collections %><%= ", " if i > 0%><a href='/collection/<%= collection.identifier%>'><%= collection.identifier %></a><% i += 1%><% end-%>
-<br/>
-or <a href='/collection/new'>create your own</a>.
+<% for collection in @collections %><%= ", " if i > 0%><a href='/collection/<%= collection.identifier%>'><%= collection.identifier %></a><% i += 1%><% end-%>.
 
 <br/><br/>
-
-See some specific things:
-<% i = 0 %>
-<% for thing in @things %><%= ", " if i > 0 %><a href='/thing/<%= thing.identifier%>'><%= thing.body %></a><% i += 1 %><% end-%>
-<br/>
-or <a href='/thing/new'>create your own</a>.
-
-<br/><br/><br/>
 
 The <a href='http://github.com/maryrosecook/kisses'>code</a> is open source.
